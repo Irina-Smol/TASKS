@@ -1,0 +1,53 @@
+import telebot 
+from telebot import types  
+
+TOKEN ='6194826294:AAFRhYAD1A3Ec-BbURNjbD16LHBvmcpLaB4'  
+
+bot = telebot.TeleBot(TOKEN)  
+
+@bot.message_handler(commands=['start']) 
+def start(message):     
+	markup = types.ReplyKeyboardMarkup(resize_keyboard=True)     
+	item1 = types.KeyboardButton('Иришка')     
+	item2 = types.KeyboardButton('Ирусик')     
+	item3 = types.KeyboardButton('Иришкинс')     
+	item4 = types.KeyboardButton('Ирина Смоленская')     
+ 
+	markup.add(item1, item2, item3, item4)     
+	bot.send_message(message.chat.id, 'Hello, {0.first_name}!'.format(message.from_user), reply_markup=markup)
+
+@bot.message_handler(content_types=['text']) 
+def bot_message(message):     
+	if message.chat.type == 'private':         
+		if message.text == 'Иришка':             
+			bot.send_message(message.chat.id, 'Это я')          
+		elif message.text == 'Ирусик':             
+			markup = types.ReplyKeyboardMarkup(resize_keyboard=True)             
+			item1 = types.KeyboardButton('Ляляля')             
+			back = types.KeyboardButton('Кнопка назад')             
+			markup.add(item1, back)              
+
+			bot.send_message(message.chat.id, 'Это Ируся', reply_markup=markup)
+
+        	elif message.text == 'Иришкинс':             
+			markup = types.ReplyKeyboardMarkup(resize_keyboard=True)             
+			item1 = types.KeyboardButton('How are you?')             
+			item2 = types.KeyboardButton('What is your name?')             
+			back = types.KeyboardButton('Кнопка назад')             
+			markup.add(item1, item2, back)    
+          
+			bot.send_message(message.chat.id, 'Это NOT Ируся', reply_markup=markup)      
+    
+		elif message.text == 'Ирина Смоленская':             
+			bot.send_message(message.chat.id, 'Это просто кнопка')          
+
+		elif message.text == 'Кнопка назад':             
+			markup = types.ReplyKeyboardMarkup(resize_keyboard=True)             
+			item1 = types.KeyboardButton('Иришка')             
+			item2 = types.KeyboardButton('Ирусик')             
+			item3 = types.KeyboardButton('Иришкинс')             
+			item4 = types.KeyboardButton('Ирина Смоленская')             
+			markup.add(item1, item2, item3, item4)             
+			bot.send_message(message.chat.id, 'Кнопка назад'.format(message.from_user), reply_markup=markup)   
+
+bot.polling(none_stop=True)
