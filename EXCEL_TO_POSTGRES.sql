@@ -12,33 +12,3 @@ select * from dataset;
  Ashan |  30 | B
 (5 ёЄЁюъ)
 
-
-
-\h explain
-
-Команда:     EXPLAIN
-Описание:    показать план выполнения оператора
-Синтаксис:
-EXPLAIN [ ( параметр [, ...] ) ] оператор
-EXPLAIN [ ANALYZE ] [ VERBOSE ] оператор
-
-где допустимый параметр:
-
-    ANALYZE [ логическое_значение ]
-    VERBOSE [ логическое_значение ]
-    COSTS [ логическое_значение ]
-    SETTINGS [ логическое_значение ]
-    BUFFERS [ логическое_значение ]
-    WAL [ логическое_значение ]
-    TIMING [ логическое_значение ]
-    SUMMARY [ логическое_значение ]
-    FORMAT { TEXT | XML | JSON | YAML }
-
-URL: https://www.postgresql.org/docs/15/sql-explain.html
-
-EXPLAIN select * from aircrafts;
-
-                        QUERY PLAN
-----------------------------------------------------------
- Seq Scan on aircrafts  (cost=0.00..1.09 rows=9 width=52)
-(1 строка)
