@@ -36,3 +36,9 @@ EXPLAIN [ ANALYZE ] [ VERBOSE ] оператор
 
 URL: https://www.postgresql.org/docs/15/sql-explain.html
 
+EXPLAIN select * from aircrafts;
+
+                        QUERY PLAN
+----------------------------------------------------------
+ Seq Scan on aircrafts  (cost=0.00..1.09 rows=9 width=52)
+(1 строка)
