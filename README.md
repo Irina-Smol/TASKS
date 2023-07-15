@@ -1,2 +1,2 @@
 # TASKS
-LeetCode, test tasks and many others
+LeetCode, Codetest tasks and many others
